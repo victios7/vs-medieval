@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=MedievalSharp&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-sans: 'Cinzel', 'Inter', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+:root {
+  --background: 36 30% 92%;
+  --foreground: 28 40% 12%;
+  --card: 38 40% 96%;
+  --card-foreground: 28 40% 12%;
+  --popover: 38 40% 96%;
+  --popover-foreground: 28 40% 12%;
+  --primary: 28 75% 38%;
+  --primary-foreground: 36 30% 96%;
+  --secondary: 38 30% 84%;
+  --secondary-foreground: 28 40% 18%;
+  --muted: 38 25% 86%;
+  --muted-foreground: 28 20% 35%;
+  --accent: 42 80% 55%;
+  --accent-foreground: 28 40% 12%;
+  --destructive: 0 70% 42%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 28 30% 70%;
+  --input: 28 30% 70%;
+  --ring: 28 75% 38%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * { border-color: hsl(var(--border)); }
+  body {
+    font-family: var(--font-sans);
+    background:
+      radial-gradient(circle at 20% 0%, hsla(28, 60%, 55%, 0.18), transparent 50%),
+      radial-gradient(circle at 80% 100%, hsla(20, 50%, 30%, 0.18), transparent 60%),
+      linear-gradient(180deg, #efe3c8 0%, #e3d2a8 100%);
+    background-attachment: fixed;
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 { font-family: 'MedievalSharp', 'Cinzel', serif; letter-spacing: 0.02em; }
+}
+
+@layer utilities {
+  .parchment {
+    background: linear-gradient(180deg, #fbf2d9 0%, #efdfb1 100%);
+    border: 2px solid #6b4a1f;
+    box-shadow: 0 6px 0 #4a2f12, inset 0 0 30px rgba(120, 80, 30, 0.18);
+    border-radius: 12px;
+  }
+  .parchment-thin {
+    background: linear-gradient(180deg, #fbf2d9 0%, #efdfb1 100%);
+    border: 1px solid #8a6a35;
+    border-radius: 8px;
+  }
+  .royal-bar {
+    background: linear-gradient(180deg, #7a1f1f 0%, #5a1313 100%);
+    border-bottom: 4px solid #2a0a0a;
+    color: #f7e3a3;
+    box-shadow: 0 4px 12px rgba(0,0,0,.35);
+  }
+  .gold-btn {
+    background: linear-gradient(180deg, #f4cd5b 0%, #c0902a 100%);
+    border: 2px solid #6b4a1f;
+    color: #2a1808;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 6px 14px;
+    box-shadow: 0 3px 0 #4a2f12;
+    transition: transform .08s, box-shadow .08s;
+  }
+  .gold-btn:hover { filter: brightness(1.06); }
+  .gold-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #4a2f12; }
+  .stone-btn {
+    background: linear-gradient(180deg, #8a8a8a 0%, #5a5a5a 100%);
+    border: 2px solid #2a2a2a;
+    color: #f1efe7;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 6px 14px;
+    box-shadow: 0 3px 0 #1a1a1a;
+  }
+  .stone-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #1a1a1a; }
+  .danger-btn {
+    background: linear-gradient(180deg, #c44 0%, #822 100%);
+    border: 2px solid #401010;
+    color: #fff5e1;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 6px 14px;
+    box-shadow: 0 3px 0 #2a0a0a;
+  }
+  .ranged-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid currentColor;
+  }
+  .scroll-shadow {
+    box-shadow: 0 0 0 2px #6b4a1f, 0 4px 16px rgba(60,30,5,.4);
+  }
+  .input-medieval {
+    background: #fff8e1;
+    border: 2px solid #6b4a1f;
+    border-radius: 6px;
+    padding: 8px 10px;
+    color: #2a1808;
+    font-family: var(--font-sans);
+  }
+  .input-medieval:focus { outline: 2px solid #c0902a; outline-offset: 0; }
+  .block-tile {
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: inset 0 -3px 0 rgba(0,0,0,.2), 0 2px 4px rgba(0,0,0,.15);
+    cursor: grab;
+    user-select: none;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .cat-circle {
+    width: 36px; height: 36px; border-radius: 999px;
+    border: 3px solid #fff8e1;
+    box-shadow: 0 0 0 1px #6b4a1f;
+  }
+  .medieval-banner {
+    background:
+      linear-gradient(180deg, #7a1f1f 0%, #5a1313 100%);
+    border-bottom: 4px solid #2a0a0a;
+    color: #f7e3a3;
+    box-shadow: 0 4px 12px rgba(0,0,0,.45), inset 0 -2px 0 #c0902a;
+    position: relative;
+  }
+  .medieval-block {
+    border-radius: 4px 12px 4px 12px;
+    padding: 8px 14px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    border: 2px solid;
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,.18),
+      inset 0 -3px 0 rgba(0,0,0,.25),
+      0 2px 4px rgba(0,0,0,.25);
+    cursor: grab;
+    user-select: none;
+    text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    font-family: 'Cinzel', serif;
+    letter-spacing: .02em;
+    position: relative;
+  }
+  .medieval-block:hover { transform: translateY(-1px); filter: brightness(1.06); }
+  .medieval-block:active { transform: translateY(1px); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
